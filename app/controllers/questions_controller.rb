@@ -4,7 +4,11 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.create(question_params)
 
-    redirect_to question_path(@question), notice: 'Новый вопрос создан!'
+    if @question.save
+      redirect_to question_path(@question), notice: 'Новый вопрос создан!'
+    else
+      redirect_to root_path, notice: 'Вопрос не отправлен'
+    end
   end
 
   def destroy
@@ -19,7 +23,7 @@ class QuestionsController < ApplicationController
   def hide
     @question.update(hidden: true)
 
-    redirect_to questions_path,notice: 'Вопрос скрыт!'
+    redirect_to questions_path, notice: 'Вопрос скрыт!'
   end
 
   def index
