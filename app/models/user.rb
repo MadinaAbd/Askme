@@ -10,9 +10,11 @@ class User < ApplicationRecord
     length: {maximum: 40},
     format: {with: /\A\w+\z/}
 
-  after_validation :downcase_nickname
+  before_validation :downcase_nickname
+
+  private
 
   def downcase_nickname
-    nickname.downcase!
+    nickname&.downcase!
   end
 end

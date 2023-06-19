@@ -13,7 +13,7 @@
   <body>
 
     <div class="wrapper">
-      <div class='navbar'>
+      <div class="navbar" style="background-color: <%= navbar_color%>">
         <p class="title-sm text-bold"><%= link_to "Ask me!", root_path %></p>
         <div>
           <% if current_user.present? %>
