@@ -35,3 +35,6 @@ a, button {
   font-weight: bold;
 }
 
+.line_break {
+  white-space: pre-line;
+}

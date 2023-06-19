@@ -1,4 +1,4 @@
-<div>
+<div class="line_break">
   <%= question.body %>
 </div>
 
@@ -13,7 +13,7 @@
     <%= button_to fa_icon('trash-o'), question_path(question), method: :delete, title: 'Удалить вопрос', form: {data: {turbo_confirm: 'Точно удалить вопрос?'}} %>
 
     <% unless question.hidden %>
-      <%= button_to fa_icon('eye-slash'), hide_question_path(question), method: :put,title: 'Скрыть вопрос', form: {data: {turbo_confirm: 'Точно скрыть вопрос?'}} %>
+      <%= button_to fa_icon('eye-slash'), hide_question_path(question), method: :put, title: 'Скрыть вопрос', form: {data: {turbo_confirm: 'Точно скрыть вопрос?'}} %>
     <% end %>
   </div>
 </div>
