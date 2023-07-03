@@ -17,7 +17,7 @@
         <p class="title-sm text-bold"><%= link_to "Ask me!", root_path %></p>
         <div>
           <% if current_user.present? %>
-            <%= content_tag 'span', display_nickname(current_user), class: 'mr-sm' %>
+            <%= link_to "@#{current_user.nickname}", user_path(current_user), class: 'mr-sm' %>
             <%= link_to 'Редактировать профиль', edit_user_path(current_user.id), class: 'button button-yellow' %>
 
             <%= button_to 'Выйти', session_path, method: :delete, class: 'button button-yellow' %>

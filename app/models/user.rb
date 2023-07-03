@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   has_secure_password
 
   validates :email, presence: true,
@@ -11,6 +12,8 @@ class User < ApplicationRecord
     format: {with: /\A\w+\z/}
 
   before_validation :downcase_nickname
+
+  has_many :questions, dependent: :delete_all
 
   private
 

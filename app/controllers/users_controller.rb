@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: %w[destroy update edit]
+  before_action :authorise_user, only: %w[edit update destroy]
 
   def new
-    session[:cureent_time] = Time.now
+    session[:current_time] = Time.now
     @user = User.new
   end
 
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   def update
+
     if @user.update(user_params)
       redirect_to root_path, notice: 'Данные пользователя обновлены!'
     else
@@ -39,6 +41,12 @@ class UsersController < ApplicationController
 
       render :edit
     end
+  end
+
+  def show
+    set_user
+    @questions = @user.questions.order(created_at: :desc)
+    @question = Question.new(user: @user)
   end
 
   private
@@ -51,5 +59,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def authorise_user
+    redirect_with_alert unless current_user == @user
   end
 end
