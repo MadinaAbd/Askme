@@ -6,9 +6,8 @@ class QuestionsController < ApplicationController
     @question = Question.create(create_question_params)
     @question.author = current_user
 
-
     if @question.save
-      redirect_to user_path(@question.user), notice: 'Новый вопрос создан!'
+      redirect_to user_path(@question.user.nickname), notice: 'Новый вопрос создан!'
     else
       redirect_to root_path, notice: 'Вопрос не отправлен'
     end
@@ -36,7 +35,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find_by!(nickname: params[:nickname])
     @question = Question.new(user: @user)
   end
 

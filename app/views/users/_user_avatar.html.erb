@@ -1,0 +1,7 @@
+<% background_class = "users-box-user-bg#{user.id % 5}" %>
+
+<div class="users-box-user <%= background_class %> rounded mr ml">
+  <a href="<%= user_path(user.nickname) %>">
+    <%= image_tag user.gravatar_url, title: "@#{user.nickname}", class: 'rounded' %>
+  </a>
+</div>

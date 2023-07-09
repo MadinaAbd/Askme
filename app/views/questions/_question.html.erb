@@ -3,7 +3,7 @@
 
   <p class="mt-sm text-sm">
     <% if question.author.present? %>
-      <%= link_to "Автор вопроса @#{question.author.nickname}" %>
+      <%= link_to "Автор вопроса @#{question.author.nickname}", user_path(question.author) %>
     <% else %>
       <%= "Вопрос от анонима" %>
     <% end %>

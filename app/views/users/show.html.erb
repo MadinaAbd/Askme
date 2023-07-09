@@ -7,7 +7,7 @@
 
     <% if current_user == @user %>
       <p class="mt mb-lg">
-        <%= link_to fa_icon('pencil'), edit_user_path(@user) %>
+        <%= link_to fa_icon('pencil'), edit_user_path(@user.nickname) %>
       </p>
     <% end %>
 
@@ -15,7 +15,7 @@
 </div>
 
 <div class="container">
-  <%= link_to "Спроси меня", new_question_path(user_id: @user.id),
+  <%= link_to "Спроси меня", new_question_path(nickname: @user.nickname),
   class: 'button button-yellow'%>
 </div>
 
@@ -41,7 +41,7 @@
     <% end %>
   <% else %>
     <div class="mt-sm container">
-      <%= link_to "Задай первый вопрос пользователю @#{@user.nickname}",new_question_path(user_id: @user.id), class: 'button button-yellow' %>
+      <%= link_to "Задай первый вопрос пользователю @#{@user.nickname}",new_question_path(nickname: @user.nickname), class: 'button button-yellow' %>
     </div>
   <% end %>
 </div>

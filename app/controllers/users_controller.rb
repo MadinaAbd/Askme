@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: %w[destroy update edit]
+  before_action :set_user, only: %w[destroy update edit show]
   before_action :authorise_user, only: %w[edit update destroy]
 
   def new
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    set_user
     @questions = @user.questions.order(created_at: :desc)
     @question = Question.new(user: @user)
   end
@@ -58,7 +57,8 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by!(nickname: params[:nickname])
+
   end
 
   def authorise_user
