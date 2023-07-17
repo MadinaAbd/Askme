@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
     @user = @question.user
     @question.destroy
 
-    redirect_to user_path(@user), notice: 'Вопрос удален!'
+    redirect_to user_path(@user.nickname), notice: 'Вопрос удален!'
   end
 
   def edit
@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
   def update
     @question.update(update_question_params)
 
-    redirect_to user_path(@question.user), notice: 'Вопрос изменен!'
+    redirect_to user_path(@question.user.nickname), notice: 'Вопрос изменен!'
   end
 
   private

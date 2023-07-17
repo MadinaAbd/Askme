@@ -39,7 +39,7 @@
   </div>
 
   <div class="mt-lg">
-    <%= button_to "Удалить пофиль", user_path(@user),
+    <%= button_to "Удалить пофиль", user_path(@user.nickname),
       method: :delete,
       form: {data: {turbo_confirm: 'Вы точно хотите удалить свой профиль?'}},
       class: 'text-red text-sm' %>
